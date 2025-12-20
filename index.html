@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#FFF7ED" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="MYE心" />
+    <link rel="apple-touch-icon" href="https://api.dicebear.com/9.x/initials/png?seed=MYE&backgroundColor=ffedd5&textColor=ea580c&size=180" />
+
+    <!-- Social Media Meta Tags (Open Graph) -->
+    <meta property="og:title" content="MYE심 학습법" />
+    <meta property="og:description" content="요한계시록 말씀을 마음에 새기는 시간" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://api.dicebear.com/9.x/initials/png?seed=MYE&backgroundColor=ffedd5&textColor=ea580c&size=512" />
+    
+    <title>MYE심 학습법</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', 'Noto Sans KR', sans-serif;
+        background-color: #fff7ed; /* orange-50 */
+        overscroll-behavior-y: none; /* Prevent pull-to-refresh on mobile */
+      }
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #fb923c; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #f97316; 
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.1/",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((registration) => {
+              console.log('ServiceWorker registration successful');
+              
+              // 업데이트 발견 시 처리
+              registration.onupdatefound = () => {
+                const installingWorker = registration.installing;
+                installingWorker.onstatechange = () => {
+                  if (installingWorker.state === 'installed') {
+                    if (navigator.serviceWorker.controller) {
+                      console.log('New content is available; please refresh.');
+                      // 선택적으로 사용자에게 새로고침 알림을 줄 수 있음
+                    } else {
+                      console.log('Content is cached for offline use.');
+                    }
+                  }
+                };
+              };
+            })
+            .catch((err) => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+            
+          // 컨트롤러 변경 감지 (새 SW가 활성화되었을 때)
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+             console.log('Controller changed');
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

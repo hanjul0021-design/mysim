@@ -1,0 +1,21 @@
+{
+  "short_name": "MYE心",
+  "name": "MYE심 학습법 & 계시록 암송",
+  "icons": [
+    {
+      "src": "https://api.dicebear.com/9.x/initials/png?seed=MYE&backgroundColor=ffedd5&textColor=ea580c&size=192",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://api.dicebear.com/9.x/initials/png?seed=MYE&backgroundColor=ffedd5&textColor=ea580c&size=512",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#FFF7ED",
+  "background_color": "#FFF7ED",
+  "orientation": "portrait"
+}
